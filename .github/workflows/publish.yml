@@ -55,7 +55,7 @@ jobs:
       # Build image
       - name: Build images
         run: |
-          cd ./llm-graph-builder/backend/
+          cd ./backend/
           sudo -E docker build -t ${{ env.IMAGE_REGISTRY }}/${{ github.repository_owner }}/${{ env.BACK_IMAGE_NAME }}:${{ env.IMAGE_TAG }} . --label ${{ github.ref }}   
           cd ../frontend/
           sudo -E docker build -t ${{ env.IMAGE_REGISTRY }}/${{ github.repository_owner }}/${{ env.FRONT_IMAGE_NAME }}:${{ env.IMAGE_TAG }} . --label ${{ github.ref }}
