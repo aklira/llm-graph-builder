@@ -1,7 +1,7 @@
 # Step 1: Build the React application
 FROM node:20 AS build
 
-ARG VITE_BACKEND_API_URL="http://localhost:8000"
+ARG VITE_BACKEND_API_URL="http://backend:8000"
 ARG VITE_REACT_APP_SOURCES=""
 ARG VITE_LLM_MODELS=""
 ARG VITE_GOOGLE_CLIENT_ID=""
@@ -52,4 +52,5 @@ COPY --from=build /app/dist /usr/share/nginx/html
 COPY /nginx/nginx.${DEPLOYMENT_ENV}.conf /etc/nginx/templates/nginx.conf.template
 
 EXPOSE 8080
+
 CMD ["nginx", "-g", "daemon off;"]
